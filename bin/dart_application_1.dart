@@ -189,23 +189,22 @@ void main() {
   //часть не выполнится.
   //print(number77 ?? 1); //если number77=null, то присвоится 1, а
   //если number77 не null, то правая часть выполнена не будет "?? 1".
-
-  //??=
+  //??= - тот же механизм, только пример при присвоении.
   //number77 ??= 1; //аналогично, если в number77 null то присвоится
   //1, если в ней не null, то 1 присвоена не будет.
 
   //Проверяем или изменяем тип объекта:  as, is, is!
-  //as - приведим к другому типу
-  //у класса int есть метод isEven() позволяет проверить четное ли
+  //as - приводим к другому типу
+  //У класса int есть метод isEven() позволяет проверить четное ли
   //число.
-  num number76 = 1; //у num данного метода нет
+  num number76 = 1; //у типа num данного метода нет, для воспользования
   //приводим к int оператором as, чтобы воспользоваться методом
   //isEven() и проверяем на четность.
   print('as - ${(number76 as int).isEven}'); // false - тк 1 не четное число
 
   //is - проверяем тип
   //Но мы не сможем привести к double тк number76 = 1, а это целое
-  //число.0
+  //число.
   //print((number76 as double).isEven); //ошибка
   //и чтобы не поймать ошибку мы можем проверить на возможность
   //приведения.
@@ -222,4 +221,90 @@ void main() {
   if (number76 is int) {
     print('if конструкция - ${number76 is! double}');
   }
+
+  //_________________________________________________________
+
+  //_________________________________________________________
+  //#9 - класс DateTime
+  print('\n\n\n\n\n_____#9 - класс DateTime _____');
+  var dateTime1 = DateTime(2022, 9, 1);
+  print(dateTime1);
+  var dateTime2 = DateTime.now();
+  print(dateTime2);
+  var dateTime3 = DateTime.parse('2020-09-01');
+  print(dateTime3);
+  var date = DateTime.august;
+  print(date);
+  var dateTime4 = DateTime.parse('2020-09-01 23:00:05');
+  print(dateTime4);
+  var dateTime5 = DateTime.parse('2020-09-01 23:00:00');
+  print(dateTime5);
+  print(dateTime4.isBefore(dateTime5));
+  print(dateTime4.isAfter(dateTime5));
+  print(dateTime4.difference(dateTime5));
+  print(dateTime4.compareTo(dateTime5.add(Duration(seconds: 5))));
+  //вывод 0 тк объекты равны
+  print(dateTime5); //метод add() не изменил сам объект dateTime5.add
+
+  //_________________________________________________________
+
+  //_________________________________________________________
+  //#10 - Коллекции (List, Set, Map)
+  print('\n\n\n\n\n_____#10 - Коллекции (List, Set, Map) _____');
+  print('______List расширяемый список_________');
+
+  List numbers1 = []; //создали пустой список
+  var numbers2 = []; //создали пустой список
+  print('_________________________');
+  print(numbers1.length);
+  print(numbers2.length);
+  print(numbers1.isEmpty);
+  print(numbers2.isEmpty);
+  print('_________________________');
+  numbers1 = [1, 2, 3]; //добавили эл. в лист
+  print(numbers1.length);
+  print(numbers1); //вывели лист
+  print('_________________________');
+  numbers2.add(125); //добавили эл. в лист numbers2
+  print(numbers2);
+  print('_________________________');
+  numbers2.addAll(numbers1); //добавили лист numbers1 в лист numbers2
+  print(numbers2);
+  print('_________________________');
+  numbers2.remove(125);
+  print(numbers2);
+  print('_________________________');
+  numbers2.removeAt(0); //удаление эл. из листа по индексу
+  print(numbers2);
+  print('_________________________');
+  print(numbers2[0]); //вывод эл. из листа по индексу
+  print('_________________________');
+  numbers2[0] = 200; //установка значения по индексу(перезаписывает)
+  print(numbers2);
+  print('_________________________');
+  numbers2.length = 7;
+  print(numbers2);
+  print('_________________________');
+
+  print('______List.filled список с фиксированной длинной_________');
+  var numbersFix1 = List.filled(5, 2); // Первый параметр -
+  // количество элементов в фиксированном списке. Второй параметр
+  // указывает на значение, которое будут иметь все элементы при
+  // создании списка.
+  print(numbersFix1);
+  print('__Установка значения по индексу___');
+  numbersFix1[numbersFix1.length - 1] = 5;
+  print(numbersFix1);
+  //numbersFix1.add(1); //тут ошибка тк не можем изменять длину
+  //фиксированного листа.
+  print('_________время 3:44_________');
+  print('_________________________');
+  print('_________________________');
+  print('_________________________');
+  print('_________________________');
+  print('_________________________');
+  print('_________________________');
+  print('_________________________');
+  print('_________________________');
+  print('_________________________');
 }
